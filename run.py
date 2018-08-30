@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 import os
 
+from config import EXE_SQL, SEND_EMAIL, SEND_PWD, RECEIVE_EMAIL, FILE_NAME, FILE_SUFFIX, FILE_PATH, EMAIL_CONTENT
 from db import get_datas, get_fields
 from email_util import create_email, send_email
 from excel import get_excel
@@ -9,13 +10,13 @@ from date_utils import getYesterday
 
 def main():
     # sender info
-    sender = '*******************'
-    password = '*******************'
+    sender = SEND_EMAIL
+    password = SEND_PWD
 
     # receiver's list
-    receiver = ['*******************', '*******************']
+    receiver = RECEIVE_EMAIL
 
-    sql = 'select * from table limit 10'
+    sql = EXE_SQL
     # create data
     my_data = get_datas(sql)
     # create field
@@ -23,9 +24,9 @@ def main():
     # get yesterday's date str
     yesterdaystr = getYesterday()
     # file name
-    my_file_name = 'data_' + yesterdaystr + '.xlsx'
+    my_file_name = FILE_NAME + yesterdaystr + FILE_SUFFIX
     # file path
-    file_path = 'D:/work/report/'
+    file_path = FILE_PATH
     if not os.path.exists(file_path):
         os.makedirs(file_path)
     # create excel
@@ -33,9 +34,9 @@ def main():
 
     email_to = ','.join(receiver)
     # email subject
-    email_subject = 'data_' + yesterdaystr
+    email_subject = FILE_NAME + yesterdaystr
     # email content
-    email_content = 'Dear all,\n\tthe attachment is yesterday\'s data,please find..\n\njackchow '
+    email_content = EMAIL_CONTENT
     # attachment path
     attach_path = file_path + my_file_name
     # attachment name

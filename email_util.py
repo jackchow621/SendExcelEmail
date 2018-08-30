@@ -5,6 +5,8 @@ from email.mime.multipart import MIMEMultipart
 from email.header import Header
 import smtplib
 
+from config import SMTP_SERVER, SMTP_PORT
+
 
 def create_email(email_from, email_to, email_Subject, email_text, annex_path, annex_name):
     # input sender's nickname, receiver's nickname,subject,title,content,attachment's name and address
@@ -35,7 +37,7 @@ def create_email(email_from, email_to, email_Subject, email_text, annex_path, an
 def send_email(sender, password, receiver, msg):
     try:
         # find the SMTP server of sender ,encrypted transmit
-        server = smtplib.SMTP_SSL("smtp.sina.com", 465)
+        server = smtplib.SMTP_SSL(SMTP_SERVER, SMTP_PORT)
         server.ehlo()
         # login sender
         server.login(sender, password)
