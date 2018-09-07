@@ -5,7 +5,7 @@ DB_PASSWORD = '*******************'
 DB_DATABASE = '*******************'
 DB_PORT = 3306
 DB_CHARSET = 'utf8'
-EXE_SQL = 'select * from table limit 10'
+EXE_SQL = 'select * from tables'
 
 # email
 SEND_EMAIL = '*******************'

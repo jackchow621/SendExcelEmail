@@ -2,7 +2,7 @@
 import os
 
 from config import EXE_SQL, SEND_EMAIL, SEND_PWD, RECEIVE_EMAIL, FILE_NAME, FILE_SUFFIX, FILE_PATH, EMAIL_CONTENT
-from db import get_datas, get_fields
+from db import get_fields, get_datas_pool, get_fields_pool
 from email_util import create_email, send_email
 from excel import get_excel
 from date_utils import getYesterday
@@ -18,9 +18,11 @@ def main():
 
     sql = EXE_SQL
     # create data
-    my_data = get_datas(sql)
+    # my_data = get_datas(sql)
+    my_data = get_datas_pool(sql)
     # create field
-    my_field = get_fields(sql)
+    # my_field = get_fields(sql)
+    my_field = get_fields_pool(sql)
     # get yesterday's date str
     yesterdaystr = getYesterday()
     # file name
