@@ -1,4 +1,6 @@
 # -*- coding:utf-8 -*-
+import time
+
 import openpyxl
 
 from config import SHEET_TITLE
@@ -17,7 +19,10 @@ def get_excel(data, field, file):
     #  write the data into the sheet
     for row in range(len(data)):
         for col in range(len(field)):
-            # from second row
+            if 'time' in field[col][0] or 'date' in field[col][0]:
+                time_local = time.localtime(data[row][col])
+                data[row][col] = time.strftime("%Y-%m-%d %H:%M:%S", time_local)
+                # print data[row][col]
             _ = sheet.cell(row=row + 2, column=col + 1, value=u'%s' % data[row][col])
     # save the workbook
     newworkbook = new.save(file)
