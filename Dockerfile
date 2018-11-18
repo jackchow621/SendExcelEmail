@@ -1,4 +1,4 @@
-FROM python:3.6.5
+FROM python:2.7.13
 
 MAINTAINER jackchow "jack_chow621@sina.com"
 
