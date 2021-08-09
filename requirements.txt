@@ -77,7 +77,7 @@ pyspider==0.3.10
 python-dateutil==2.7.3
 python-scrapyd-api==2.1.2
 pytz==2018.5
-pywin32==221
+pywin32==301
 pywinpty==0.5.4
 PyYAML==3.13
 pyzmq==17.1.0
